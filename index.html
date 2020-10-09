@@ -6,6 +6,19 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<div id="app" class="container">
+  <h1>My Totos</h1>
+  <ul>
+    <li v-for="todo in todos">{{todo}}</li>
+  </ul>
+
+  <form v-on:submit.prevent="addItem">
+    <input type="text" v-model="newItem">
+    <input type="submit" value="Add">
+  </form>
+</div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="js/main.js"></script>
 </body>
