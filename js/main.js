@@ -20,11 +20,12 @@
         },
       ],
     },
+
     methods: {
       addItem: function () {
         var item = {
           title: this.newItem,
-          isDone: false
+          isDone: false,
         };
         this.todos.push(item);
         this.newItem = "";
@@ -33,6 +34,28 @@
         if (confirm("are you sure?")) {
           this.todos.splice(index, 1);
         }
+      },
+      perge: function (index) {
+        if (!confirm("delete finished?")) {
+          return;
+        }
+        // this.todos = this.todos.filter(function (todo) {
+        //   return !todo.isDone;
+        // });
+        this.todos = this.remaining;
+      },
+    },
+
+    computed: {
+      remaining: function () {
+        // var items = this.todos.filter(function (todo) {
+        //   return !todo.isDone;
+        // });
+        // console.log(items);
+        // return items.length;
+        return this.todos.filter(function (todo) {
+          return !todo.isDone;
+        });
       },
     },
   });

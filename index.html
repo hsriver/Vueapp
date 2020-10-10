@@ -8,11 +8,15 @@
 <body>
 
 <div id="app" class="container">
-  <h1>My Totos</h1>
+  <h1>
+    <button @click="perge">Perge</button>
+    My Totos
+    <span class="info">({{ remaining.length }}/{{ todos.length }})</span>
+  </h1>
   <ul v-if="todos.length">
     <li v-for="(todo, index) in todos">
       <input type="checkbox" v-model="todo.isDone">
-      <span v-bind:class="{done: todo.isDone}">{{todo.title}}</span>
+      <span :class="{done: todo.isDone}">{{todo.title}}</span>
       <span @click="deleteItem(index)" class="command">[x]</span>
     </li>
   </ul>
